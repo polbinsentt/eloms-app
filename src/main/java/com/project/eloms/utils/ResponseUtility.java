@@ -19,7 +19,7 @@ public class ResponseUtility {
 
     public static ResponseDto getSuccessResponse(MessageType message, Object data){
         ResponseDto res = new ResponseDto();
-        res.setCode("S0001");
+        res.setCode("S0002");
         res.setMessage(message);
         res.setData(data);
         res.setResponseStatus(ResponseStatus.SUCCESS);
