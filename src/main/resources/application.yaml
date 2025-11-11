@@ -1,3 +1,20 @@
 spring:
   application:
     name: eloms
+  datasource:
+    url: jdbc:mysql://localhost:3306/eloms
+    username: root
+    password: Admin123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        format-sql: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+server:
+  port: 80
+
