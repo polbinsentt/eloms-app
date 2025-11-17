@@ -1,4 +1,4 @@
-package com.project.eloms.controllers;
+package com.project.eloms.controllers.user;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

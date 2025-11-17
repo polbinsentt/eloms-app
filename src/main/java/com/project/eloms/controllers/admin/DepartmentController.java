@@ -1,8 +1,8 @@
 package com.project.eloms.controllers.admin;
 
-import com.project.eloms.dtos.DepartmentDto;
+import com.project.eloms.dtos.admin.DepartmentDto;
 import com.project.eloms.dtos.ResponseDto;
-import com.project.eloms.services.DepartmentService;
+import com.project.eloms.services.admin.DepartmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

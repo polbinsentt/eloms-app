@@ -2,9 +2,27 @@ package com.project.eloms.configs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
+    @Bean // Password Encryption
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+                .csrf(csrf -> csrf.disable())                       // disable CSRF for APIs
+                .authorizeHttpRequests(auth -> auth
+                        .anyRequest().permitAll()                                             // allow all endpoints
+                )
+                .formLogin(login -> login.disable())           // disable login form
+                .httpBasic(basic -> basic.disable());           // disable basic auth
 
+        return http.build();
+    }
 }

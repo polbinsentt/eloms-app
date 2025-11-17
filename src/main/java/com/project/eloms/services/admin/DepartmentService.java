@@ -1,6 +1,6 @@
-package com.project.eloms.services;
+package com.project.eloms.services.admin;
 
-import com.project.eloms.dtos.DepartmentDto;
+import com.project.eloms.dtos.admin.DepartmentDto;
 import com.project.eloms.dtos.ResponseDto;
 import com.project.eloms.entities.Department;
 import com.project.eloms.repositories.DepartmentRepository;
