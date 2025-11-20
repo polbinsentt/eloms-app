@@ -20,4 +20,9 @@ public class RoleController {
     public ResponseDto setRole(@RequestBody RoleDto role){
         return roleService.setRole(role);
     }
+
+    @PostMapping("/list")
+    public ResponseDto listRole(){
+        return roleService.listRole();
+    }
 }

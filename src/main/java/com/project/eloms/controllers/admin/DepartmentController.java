@@ -18,9 +18,9 @@ public class DepartmentController {
         return departmentService.setDepartment(departmentDto);
     }
 
-    @PostMapping("/get/{id}")
-    public ResponseDto getDepartmentById(@PathVariable Long id){
-        return departmentService.getDepartmentById(id);
+    @PostMapping("/list")
+    public ResponseDto listDepartment(){
+        return departmentService.listDepartment();
     }
 
     @PostMapping("/delete/{id}")

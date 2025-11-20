@@ -24,9 +24,8 @@ public class AccountDto {
 
     private String email;
     private String phoneNumber;
-    private List<Roles> roles;
-
     private Long departmentId;
-    private AccountStatus accountStatus;
 
+    private List<Roles> roles;
+    private AccountStatus accountStatus;
 }

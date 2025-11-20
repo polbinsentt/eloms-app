@@ -119,8 +119,8 @@ public class AccountService {
         return ResponseUtility.getSuccessResponse(MessageType.ACCOUNT_SUCCESSFULLY_FETCHED, account);
     }
 
-    public ResponseDto getAccounts() {
-        List<Map<String,Object>> res = accountRepository.getAccounts();
+    public ResponseDto listAllAccounts() {
+        List<Map<String,Object>> res = accountRepository.listAllAccounts();
 
     return ResponseUtility.getSuccessResponse(MessageType.SUCCESSFULLY_FETCHED_ACCOUNTS, res);
     }

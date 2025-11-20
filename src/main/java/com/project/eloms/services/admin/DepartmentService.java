@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -17,6 +19,9 @@ public class DepartmentService {
     private final DepartmentRepository departmentRepository;
 
     public ResponseDto setDepartment(DepartmentDto departmentDto) {
+        if (departmentDto.getDepartmentName() == null || departmentDto.getDepartmentName().isBlank())
+            return ResponseUtility.getErrorResponse("E0001", MessageType.MISSING_REQUIRED_FIELD_INPUT);
+
         Department department = departmentRepository.findByDepartmentName(departmentDto.getDepartmentName()).orElse(null);
         if(department == null) {
             department = new Department();
@@ -25,20 +30,12 @@ public class DepartmentService {
             department.setCreatedBy("ADMIN");
         }
         department.setUpdatedAt(new Date());
-        department.setUpdatedBy("ADMIN1");
+        department.setUpdatedBy("ADMIN");
         departmentRepository.save(department);
 
-        return ResponseUtility.getSuccessResponse(MessageType.DEPARTMENT_SUCCESSFULLY_CREATED, department);
+        return ResponseUtility.getSuccessResponse(MessageType.DEPARTMENT_SUCCESSFULLY_CREATED);
     }
 
-    public ResponseDto getDepartmentById(Long id) {
-        Department department = departmentRepository.findById(id).orElse(null);
-
-        if(department == null)
-            return ResponseUtility.getErrorResponse("E0001", MessageType.DEPARTMENT_NOT_FOUND);
-
-        return ResponseUtility.getSuccessResponse(MessageType.DEPARTMENT_SUCCESSFULLY_FETCHED, department);
-    }
 
     public ResponseDto deleteDepartmentById(Long id) {
         Department department = departmentRepository.findById(id).orElse(null);
@@ -48,5 +45,10 @@ public class DepartmentService {
 
         departmentRepository.deleteById(id);
         return ResponseUtility.getSuccessResponse(MessageType.DEPARTMENT_SUCCESSFULLY_DELETED);
+    }
+
+    public ResponseDto listDepartment() {
+        List<Map<String,Object>> res = departmentRepository.listAllDepartment();
+        return ResponseUtility.getSuccessResponse(MessageType.SUCCESSFULLY_FETCHED_DATA,res);
     }
 }

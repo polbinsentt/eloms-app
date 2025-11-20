@@ -55,5 +55,5 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
                     ON p.user_id = u.id
             GROUP BY u.id;
             """,nativeQuery = true)
-    List<Map<String, Object>> getAccounts();
+    List<Map<String, Object>> listAllAccounts();
 }

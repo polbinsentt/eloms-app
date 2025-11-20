@@ -3,13 +3,8 @@ package com.project.eloms.controllers.admin;
 import com.project.eloms.dtos.admin.AccountDto;
 import com.project.eloms.dtos.ResponseDto;
 import com.project.eloms.services.admin.AccountService;
-import com.project.eloms.types.MessageType;
-import com.project.eloms.utils.ResponseUtility;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Map;
 
 @RequiredArgsConstructor
 @RestController
@@ -23,11 +18,9 @@ public class AccountController {
         return accountService.setAccount(dto);
     }
 
-    @PostMapping("/get")
-    public ResponseDto getAccounts(){
-
-
-        return  accountService.getAccounts();
+    @PostMapping("/list")
+    public ResponseDto listAllAccounts(){
+        return  accountService.listAllAccounts();
     }
 
     @PostMapping("/get/{id}")

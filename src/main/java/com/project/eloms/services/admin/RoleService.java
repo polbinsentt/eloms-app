@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -31,5 +33,11 @@ public class RoleService {
         roleRepository.save(role);
 
         return ResponseUtility.getSuccessResponse(MessageType.ROLE_SUCCESSFULLY_CREATED,role);
+    }
+
+    public ResponseDto listRole() {
+        List<Map<String,Object>> roles = roleRepository.listRoles();
+
+        return ResponseUtility.getSuccessResponse(MessageType.SUCCESSFULLY_FETCHED_DATA,roles);
     }
 }
