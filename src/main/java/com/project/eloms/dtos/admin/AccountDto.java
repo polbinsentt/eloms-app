@@ -1,13 +1,11 @@
 package com.project.eloms.dtos.admin;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.project.eloms.entities.Role;
-import com.project.eloms.types.AccountStatus;
 import com.project.eloms.types.Roles;
+import com.project.eloms.types.SortOrder;
 import lombok.Data;
 
 import java.util.Date;
-import java.util.List;
 
 @Data
 public class AccountDto {
@@ -26,6 +24,12 @@ public class AccountDto {
     private String phoneNumber;
     private Long departmentId;
 
-    private List<Roles> roles;
-    private AccountStatus accountStatus;
+    private Roles role;
+    private Boolean isActive;
+
+    //Search
+    private String departmentName;
+
+    private SortOrder sortOrder;
+    private String sortBy;
 }

@@ -1,6 +1,5 @@
 package com.project.eloms.entities;
 
-import com.project.eloms.types.AccountStatus;
 import com.project.eloms.types.Roles;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -8,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
-import java.util.List;
 
 @Getter
 @Setter
@@ -43,18 +41,18 @@ public class Account {
     @Column(name = "email")
     private String email;
 
-    @Transient
+    @Column(name = "phone_number")
     private String phoneNumber;
-
-    @Transient
-    private List<String> roles;
 
     @Column(name = "department_id")
     private long departmentId;
 
-    @Column(name = "account_status")
+    @Column(name = "role")
     @Enumerated(EnumType.STRING)
-    private AccountStatus accountStatus;
+    private Roles role;
+
+    @Column(name = "is_active", columnDefinition = "TINYINT(1)")
+    private Boolean isActive;
 
     @Column(name = "created_at")
     private Date createdAt;

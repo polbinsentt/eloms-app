@@ -15,7 +15,11 @@ public interface DepartmentRepository extends JpaRepository<Department, Long> {
 
     @Query(value = """
             SELECT
-                JSON_ARRAYAGG(department_name)   AS departments
+                JSON_ARRAYAGG(
+                JSON_OBJECT(
+                'id', id,
+                'name', department_name
+                ))   AS departments
             FROM department
             """, nativeQuery = true)
     List<Map<String, Object>> listAllDepartment();

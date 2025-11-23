@@ -23,8 +23,8 @@ public class DepartmentController {
         return departmentService.listDepartment();
     }
 
-    @PostMapping("/delete/{id}")
-    public ResponseDto deleteDepartmentById(@PathVariable Long id){
-        return departmentService.deleteDepartmentById(id);
+    @PostMapping("/delete/{departmentId}")
+    public ResponseDto deleteDepartmentById(@PathVariable Long departmentId){
+        return departmentService.deleteDepartmentById(departmentId);
     }
 }
