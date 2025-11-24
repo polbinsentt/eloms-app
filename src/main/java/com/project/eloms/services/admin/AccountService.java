@@ -34,12 +34,7 @@ public class AccountService {
 
         if (dto.getUsername() == null || dto.getUsername().isBlank())
             return ResponseUtility.getErrorResponse("E0002", MessageType.USERNAME_INPUT_REQUIRED);
-        /*
-        * check if username already exist
-        * if new account validate input if all fields are present
-        * if not then create new account
-        * before creating new account check if valid department id
-        * */
+
         Account account = accountRepository.findByUsername(dto.getUsername()).orElse(null);
         boolean isNew = account == null;
 
